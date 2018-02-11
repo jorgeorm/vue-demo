@@ -1,0 +1,8 @@
+@charset 'UTF-8';
+
+/* 1. Imports base requirements for the styles */
+@import './base/main';
+/* 2. Imports base variables */
+@import './helpers/main';
+/* 3. Imports base components for the styles */
+@import './components/main';

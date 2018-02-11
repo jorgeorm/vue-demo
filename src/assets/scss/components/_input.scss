@@ -1,0 +1,27 @@
+
+.input,
+input {
+    background-color: white;
+    border: 1pt solid rgba(0,0,0,0.20);
+    font-size: $base-font-size;
+    box-sizing: content-box;
+
+    &--active,
+    &:focus,
+    &:hover {
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    }
+
+    &:focus {
+        border: 1pt solid rgba(0, 0, 0, 0.30)
+    }
+}
+
+label,
+.label {
+    text-align: left;
+
+    &:focus {
+        text-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    }
+}
