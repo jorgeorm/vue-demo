@@ -1,6 +1,6 @@
 import { OK } from 'http-status-codes';
 
-import { http, signHttp } from '../network';
+import { http, signHttp } from '@/modules/network';
 
 /** @const {String} AUTH - AUTH URI */
 const AUTH = '/auth';

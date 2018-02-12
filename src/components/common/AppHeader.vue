@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import auth from '../../modules/auth/auth.service';
+import auth from '@/modules/auth/auth.service';
 
 export default {
   name: 'AppHeader',

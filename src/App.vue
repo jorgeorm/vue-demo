@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Notification from './components/common/Notification';
+import Notification from '@/components/common/Notification';
 
 export default {
   name: 'App',

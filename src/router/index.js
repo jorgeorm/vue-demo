@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Login from '../components/common/Login';
+import Login from '@/components/common/Login';
+import authMiddleware from '@/modules/auth/auth.middleware';
 
-import authMiddleware from '../modules/auth/auth.middleware';
 import userRoutes from './user.routes';
 
 Vue.use(Router);

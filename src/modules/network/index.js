@@ -10,7 +10,7 @@ axios.defaults.baseURL = API_ENDPOINTS[process.env.NODE_ENV];
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 axios.defaults.headers.patch['Content-Type'] = 'application/json';
-axios.defaults.timeout = 2000;
+axios.defaults.timeout = process.env === 'production' ? 1500 : 30000;
 
 /** @constant {axios} http - Axios instance for http request without authorization */
 export const http = axios.create();

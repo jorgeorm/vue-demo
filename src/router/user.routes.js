@@ -1,4 +1,4 @@
-import Dashboard from '../components/user/Dashboard';
+import Dashboard from '@/components/user/Dashboard';
 
 const userRoutes = [
   {
