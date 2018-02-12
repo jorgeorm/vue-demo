@@ -18,9 +18,13 @@
           v-model="password"
           type="password" name="credPassword" id="creds-password">
       </div>
-      <input class="btn login__btn"
-        :disabled="cantLogin"
-        type="submit" value="Login">
+      <div class="login__action">
+        <Spinner class="login__spinner"
+          v-bind:active="isLoggingIn"/>
+        <input class="btn login__btn"
+          :disabled="cantLogin"
+          type="submit" value="Login">
+      </div>
     </form>
   </div>
 </div>
@@ -29,6 +33,7 @@
 
 <script>
 import auth from '@/modules/auth/auth.service';
+import Spinner from '@/components/common/Spinner';
 
 /** @constant {Regex} EMAIL_REGEX - 99% success regular expression for validating emails */
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -36,6 +41,9 @@ const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))
 
 export default {
   name: 'Login',
+  components: {
+    Spinner,
+  },
   data: () => ({
     email: undefined,
     password: undefined,
@@ -126,12 +134,13 @@ export default {
 
   &__btn {
       width: 250px;
-      margin: 16px 0;
+  }
 
-      @media screen and (min-width: $md-bp) {
-          margin: 22px 0;
-          width: 350px;
-      }
+  &__spinner {
+    position: absolute;
+    margin: 8px;
+    top: 0;
+    left: 0;
   }
 }
 </style>

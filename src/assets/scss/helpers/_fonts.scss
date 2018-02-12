@@ -1,0 +1,12 @@
+// Rem is similar to the em value, but instead of being relative to the
+// parent element it’srelative to the font-size set in the <html>.
+@function calculateRem($size) {
+  $remSize: $size / $base-font-size;
+  @return $remSize * 1rem;
+}
+
+// Creates a fallback to pixels when rem isn’t supported.
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}

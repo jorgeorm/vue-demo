@@ -1,0 +1,41 @@
+// Keyframes mixin
+// Generates the keyframes tags required with the proper animation name
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} { @content; }
+  @-moz-keyframes #{$animation-name} { @content; }
+  @-ms-keyframes #{$animation-name} { @content; }
+  @keyframes #{$animation-name} { @content; }
+}
+
+// Animations are always a pain to create with all the vendor prefixes and what not.
+// But with the help of this mixin it will boil down to just a few lines of code.
+@mixin animation($args...) {
+  -webkit-animation: $args;
+  -moz-animation: $args;
+  -ms-animation: $args;
+  -o-animation: $args;
+  animation: $args;
+}
+
+// Animations fill mode
+@mixin animation-fill-mode($mode) {
+  webkit-animation-fill-mode: #{$mode};
+  animation-fill-mode: #{$mode};
+}
+
+// As with animations, transitions also make your code quite
+// bloated which can hurt the readability. But this is also
+// solved by using a mixin for it.
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+// Avoid the postcss stuff on the transforms
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  transform: $args;
+}

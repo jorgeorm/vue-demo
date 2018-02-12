@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'assets/scss/helpers/breakpoints';
+@import 'assets/scss/helpers/main';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -65,6 +65,15 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
+  }
+
+  &__modak-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
