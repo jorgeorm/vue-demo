@@ -50,11 +50,12 @@ export default {
   }
 
   &__login {
-    @media screen and (min-width: $sm-bp) {
+    @include bp-min-sm {
       width: 350px;
       margin: auto;
     }
-    @media screen and (min-width: $md-bp) {
+
+    @include bp-min-md {
       width: 500px;
       height: auto;
     }

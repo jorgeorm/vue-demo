@@ -84,11 +84,11 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../assets/scss/helpers/breakpoints';
+@import '../../assets/scss/helpers/main';
 
 .login {
 
-  @media screen and (min-width: $md-bp) {
+  @include bp-min-md {
     border: 1px solid rgba(0,0,0,.25);
     box-shadow: 0 3px 5px 0 rgba(0,0,0,0.19),0 3px 11px 0 rgba(0,0,0,0.11);
   }
@@ -96,11 +96,11 @@ export default {
   &__inner {
       padding: 5px;
 
-      @media screen and (min-width: $sm-bp) {
+      @include bp-min-sm {
           padding: 10px;
       }
 
-      @media screen and (min-width: $md-bp) {
+      @include bp-min-md {
           padding: 15px;
       }
   }
@@ -110,12 +110,12 @@ export default {
       width: 300px;
       padding: 4px;
 
-      @media screen and (min-width: $sm-bp) {
+      @include bp-min-sm {
           padding: 12px 4px;
           width: 310px;
       }
 
-      @media screen and (min-width: $md-bp) {
+      @include bp-min-md {
           width: 400px;
       }
   }
@@ -127,9 +127,19 @@ export default {
   &__label {
       padding: 2px 5px;
 
-      @media screen and (min-width: $sm-bp) {
+      @include bp-min-sm {
           padding: 4px 5px;
       }
+  }
+
+  &__action {
+    position: relative;
+    margin: 16px 0;
+
+    @include bp-min-md {
+        margin: 22px 0;
+        width: 350px;
+    }
   }
 
   &__btn {

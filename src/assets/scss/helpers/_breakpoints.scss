@@ -1,3 +1,25 @@
-$sm-bp: 360px;
-$md-bp: 768px;
-$lg-bp: 1024px;
+$bp-sm-min: (360px / $base-font-size) * 1em;
+$bp-md-min: (768px / $base-font-size) * 1em;
+$bp-lg-min: (1024px / $base-font-size) * 1em;
+
+$sm-max-bp: (361px / $base-font-size) * 1em;
+$md-max-bp: (769px / $base-font-size) * 1em;
+$lg-max-bp: (1025px / $base-font-size) * 1em;
+
+@mixin bp-min-sm {
+  @media only screen and (min-width: $bp-sm-min) {
+    @content;
+  }
+}
+
+@mixin bp-min-md {
+  @media only screen and (min-width: $bp-md-min) {
+    @content;
+  }
+}
+
+@mixin bp-min-lg {
+  @media only screen and (min-width: $bp-lg-min) {
+    @content;
+  }
+}
