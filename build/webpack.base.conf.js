@@ -47,7 +47,14 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        rules: [
+          {
+            issuer: /\.spec.js$/,
+            resource: /src/,
+            use: 'inject-loader'
+          },
+          { use: 'babel-loader' },
+        ],
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
