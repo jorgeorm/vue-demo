@@ -1,9 +1,22 @@
 import { OK } from 'http-status-codes';
 
-import { http, signHttp } from '@/modules/network';
+import { http, axios } from '@/modules/network';
 
 /** @const {String} AUTH - AUTH URI */
 const AUTH = '/auth';
+
+/**
+ * Gets an axios instance for http request with authorization
+ * @param {String} [token=localStorage.getItem('auth-token')] - Token to be used
+ * @return {axios}
+ */
+function signHttp(token = localStorage.getItem('auth-token')) {
+  return axios.create({
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
 
 /**
  * @module authService - Handles Authentication operations
@@ -20,7 +33,7 @@ export default {
   */
   async login({ email, password } = {}) {
     if (typeof email === 'undefined' || email === '' ||
-      typeof password === 'undefined' || password === '') return false;
+      typeof password === 'undefined' || password === '') throw new TypeError('credentials not present');
 
     try {
       const { data, status } = await http.post(AUTH, { email, password });
@@ -31,8 +44,6 @@ export default {
 
       return true;
     } catch (err) {
-      // eslint-disable-next-line
-      console.error(err);
       throw err;
     }
   },
@@ -43,7 +54,7 @@ export default {
    */
   get isLoggedIn() {
     const token = localStorage.getItem('authToken');
-    return typeof token !== 'undefined' && token;
+    return typeof token !== 'undefined' && token !== null && token !== '';
   },
 
   /**
@@ -52,14 +63,15 @@ export default {
    */
   async currentUser() {
     const userEndpoint = `${AUTH}/user`;
-    if (!this.isLoggedIn) return undefined;
+    if (!this.isLoggedIn) throw new TypeError('User is not logged in');
 
     try {
-      const authorized = signHttp();
-      return await authorized.post(userEndpoint);
+      const signedHttp = signHttp();
+      const { data, status } = await signedHttp.post(userEndpoint);
+
+      if (status !== OK || !data.success) return undefined;
+      return data.user;
     } catch (err) {
-      // eslint-disable-next-line
-      console.error(err);
       throw err;
     }
   },

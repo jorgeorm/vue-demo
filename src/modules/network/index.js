@@ -13,15 +13,10 @@ axios.defaults.headers.patch['Content-Type'] = 'application/json';
 axios.defaults.timeout = process.env === 'production' ? 1500 : 30000;
 
 /** @constant {axios} http - Axios instance for http request without authorization */
-export const http = axios.create();
+const http = axios.create();
 
+export default {
+  http,
+  axios,
+};
 
-/**
- * Gets an axios instance for http request with authorization
- * @return {axios}
- */
-export const signHttp = () => axios.create({
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('auth-token')}`,
-  },
-});
